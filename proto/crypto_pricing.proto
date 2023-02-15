@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option go_package = "blox-client-service/proto";
+
+package crypto_pricing;
+
+service CryptoPricing {
+  rpc GetPrice(PriceRequest) returns (PriceResponse) {}
+}
+
+message PriceRequest {
+  string currency = 1;
+  repeated string symbols = 2;
+}
+
+message PriceResponse {
+  repeated Symbol symbols = 1;
+}
+
+message Symbol {
+  string name = 1;
+  double price = 2;
+  string currency = 3;
+}
